@@ -130,8 +130,34 @@ h1.hero-h1 em{font-style:italic;color:var(--gd)}
 .survey-option span{font-size:.97rem;color:var(--td);font-weight:600;}
 .survey-btn{width:100%;padding:16px 18px;border:none;border-radius:18px;background:var(--gd);color:var(--w);font-size:.97rem;font-weight:700;cursor:pointer;transition:all .3s;box-shadow:0 16px 36px rgba(29,92,40,.22);}
 .survey-btn:hover{background:var(--gm);transform:translateY(-2px);box-shadow:0 20px 46px rgba(29,92,40,.25);}
+.survey-progress{height:6px;background:rgba(110,212,122,.16);border-radius:999px;margin:0 34px;position:relative;z-index:1;overflow:hidden;}
+.survey-progress-bar{height:100%;width:11%;border-radius:999px;background:linear-gradient(90deg,var(--gd),var(--gm));transition:width .45s ease;}
+.survey-step-tag{display:inline-flex;padding:.55rem 1rem;border-radius:999px;background:rgba(110,212,122,.12);color:var(--gd);font-size:.8rem;font-weight:700;letter-spacing:.04em;margin-bottom:14px;}
+.survey-body{display:grid;gap:14px;padding:0 34px 18px;}
+.survey-scale{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+.survey-scale-btn{aspect-ratio:1;border:1px solid rgba(110,212,122,.22);border-radius:14px;background:rgba(255,255,255,.92);color:var(--td);font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;}
+.survey-scale-btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(29,92,40,.1);}
+.survey-scale-btn.is-on{background:linear-gradient(135deg,var(--gd),var(--gm));color:#fff;border-color:transparent;box-shadow:0 12px 28px rgba(29,92,40,.2);}
+.survey-scale-labels{display:flex;justify-content:space-between;font-size:.78rem;color:var(--tl);margin-top:4px;}
+.survey-field{display:flex;flex-direction:column;gap:8px;}
+.survey-field label{font-size:.85rem;font-weight:700;color:var(--td);}
+.survey-field input,.survey-field textarea{width:100%;padding:14px 16px;border:1px solid rgba(110,212,122,.22);border-radius:14px;background:rgba(255,255,255,.95);font-family:inherit;font-size:.95rem;color:var(--td);transition:border-color .2s;box-sizing:border-box;}
+.survey-field input:focus,.survey-field textarea:focus{outline:none;border-color:var(--gd);}
+.survey-field textarea{min-height:120px;resize:vertical;}
+.survey-error{color:#c0392b;font-size:.85rem;font-weight:600;padding:0 34px;margin:-4px 0 0;display:none;}
+.survey-error.is-on{display:block;}
+.survey-nav{display:flex;gap:12px;align-items:center;padding:8px 34px 32px;}
+.survey-back{background:transparent;border:none;color:var(--tm);font-size:.92rem;font-weight:700;cursor:pointer;padding:14px 8px;transition:color .2s;}
+.survey-back:hover{color:var(--gd);}
+.survey-nav .survey-btn{flex:1;width:auto;}
+.survey-done{display:none;flex-direction:column;align-items:center;text-align:center;gap:16px;padding:48px 34px 44px;}
+.survey-done.is-on{display:flex;}
+.survey-done-icon{width:74px;height:74px;border-radius:20px;background:linear-gradient(135deg,var(--gd),var(--gm));color:#fff;display:flex;align-items:center;justify-content:center;font-size:34px;}
+.survey-done h3{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--td);margin:0;}
+.survey-done p{font-size:.96rem;color:var(--tm);line-height:1.7;max-width:360px;margin:0;}
+@media(max-width:640px){.survey-progress{margin:0 22px}.survey-body{padding:0 22px 16px}.survey-error{padding:0 22px}.survey-nav{padding:6px 22px 24px}.survey-card-head{padding:30px 24px 18px}.survey-scale{gap:8px}.survey-scale-btn{font-size:.9rem}.survey-done{padding:40px 24px}}
 @media(max-width:960px){.survey-grid{grid-template-columns:1fr}.survey-panel{order:2}.survey-card{order:1;}.survey-panel-card{padding:28px;}.survey-form{padding:0 26px 28px;}}
-@media(max-width:640px){.survey-section{padding:64px 5%}.survey-card-head h3{font-size:1.55rem;}.survey-panel-card{padding:24px;}.survey-form{gap:14px;padding:0 22px 24px;}.survey-option{padding:16px 18px;}#numeri{padding:60px 6%}.numeri-wrap{grid-template-columns:1fr;gap:36px}.numero+.numero::before{display:none}.marquee{padding:16px 0}.marquee-item{font-size:.82rem;padding:0 22px;letter-spacing:.07em}.pd-slide{width:clamp(240px,82vw,330px)}.pd-slide.is-left,.pd-slide.is-right{opacity:0;transform:scale(.6)}.pd-arrow{width:44px;height:44px;font-size:1.4rem}}
+@media(max-width:640px){.survey-section{padding:64px 5%}.survey-card-head h3{font-size:1.55rem;}.survey-panel-card{padding:24px;}.survey-form{gap:14px;padding:0 22px 24px;}.survey-option{padding:16px 18px;}#numeri{padding:60px 6%}.numeri-wrap{grid-template-columns:1fr;gap:36px}.numero+.numero::before{display:none}.marquee{padding:16px 0}.marquee-item{font-size:.82rem;padding:0 22px;letter-spacing:.07em}.pd-slide{width:clamp(250px,85vw,325px);padding:35px 13px 28px;border-radius:50px}.pd-slide.is-left,.pd-slide.is-right{opacity:0;transform:scale(.6)}.pd-arrow{width:44px;height:44px;font-size:1.4rem}}
 
 /* 3-D TABLET */
 .tablet-scene{position:relative;perspective:1500px;z-index:1;width:82%;max-width:520px;animation:tabfloat 5s ease-in-out infinite}
@@ -258,15 +284,14 @@ section{padding:96px 6%}
 .pd-intro .sd{max-width:none;white-space:nowrap}
 .pd-carousel{position:relative;max-width:1100px;margin:0 auto;padding:20px 0}
 .pd-stage{position:relative;display:grid;grid-template-columns:1fr;justify-items:center;align-items:center}
-.pd-slide{grid-area:1/1;width:clamp(270px,32vw,370px);cursor:pointer;transition:transform .6s cubic-bezier(.33,1,.68,1),opacity .6s;will-change:transform,opacity}
+.pd-slide{grid-area:1/1;width:clamp(260px,31vw,375px);cursor:pointer;transition:transform .6s cubic-bezier(.33,1,.68,1),opacity .6s;will-change:transform,opacity;position:relative;background:linear-gradient(155deg,#3a3d44 0%,#222429 46%,#141518 100%);border-radius:56px;padding:42px 15px 32px;box-shadow:0 40px 90px rgba(0,0,0,.5),0 18px 40px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.14),inset 0 0 0 1px rgba(255,255,255,.06)}
 .pd-slide.is-center{transform:scale(1);opacity:1;z-index:30;cursor:default}
 .pd-slide.is-right{transform:translateX(76%) scale(.54);opacity:.5;z-index:20}
 .pd-slide.is-left{transform:translateX(-76%) scale(.54);opacity:.5;z-index:20}
 .pd-slide.is-back{transform:scale(.4);opacity:0;z-index:10}
-.pd-card{border-radius:28px;overflow:hidden;background:linear-gradient(160deg,#2a2a2e 0%,#1a1a1e 60%,#111115 100%);box-shadow:0 40px 90px rgba(0,0,0,.5),0 20px 45px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.12),inset 1px 0 0 rgba(255,255,255,.08),0 0 0 1px rgba(255,255,255,.06);border:none;position:relative;width:100%;padding:14px}
-.pd-card img{width:100%;height:auto;display:block;border-radius:16px}
-.pd-card::after{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(130deg,rgba(255,255,255,.15) 0%,rgba(255,255,255,.04) 35%,transparent 60%,rgba(0,0,0,.08) 100%);pointer-events:none;z-index:2}
-.pd-card::before{content:'';position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:80px;height:4px;border-radius:2px;background:rgba(255,255,255,.18);z-index:1}
+.pd-slide img{width:100%;height:auto;display:block;border-radius:30px;box-shadow:0 0 0 1px rgba(0,0,0,.28)}
+.pd-slide::before{content:'';position:absolute;top:15px;left:50%;transform:translateX(-50%);width:32%;max-width:118px;height:24px;border-radius:999px;background:#0a0b0d;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);z-index:3}
+.pd-slide::after{content:'';position:absolute;bottom:13px;left:50%;transform:translateX(-50%);width:38%;max-width:130px;height:6px;border-radius:999px;background:rgba(255,255,255,.34);z-index:3}
 .pd-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:40;width:54px;height:54px;border-radius:50%;border:1px solid rgba(110,212,122,.45);background:var(--w);color:var(--gd);font-size:1.7rem;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 12px 30px rgba(29,92,40,.16);transition:background .25s,color .25s,transform .25s;padding:0}
 .pd-arrow:hover{background:var(--gd);color:var(--w);transform:translateY(-50%) scale(1.08)}
 .pd-prev{left:12px}
@@ -322,7 +347,7 @@ section{padding:96px 6%}
 
 /* CONTATTI */
 #contatti{background:var(--gu)}
-.cont-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:76px;align-items:start}
+.cont-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:76px;align-items:stretch}
 .cpromise{background:linear-gradient(135deg,var(--gd) 0%,#0a2e12 100%);border-radius:20px;padding:28px;margin-top:30px;position:relative;overflow:hidden}
 .cpromise::before{content:'';position:absolute;top:-40%;right:-20%;width:70%;height:70%;background:radial-gradient(circle,rgba(110,212,122,.1) 0%,transparent 70%)}
 .pi{display:flex;gap:12px;align-items:flex-start;margin-bottom:17px;position:relative}.pi:last-child{margin-bottom:0}
@@ -330,6 +355,11 @@ section{padding:96px 6%}
 .pi-text strong{display:block;font-size:.82rem;font-weight:700;color:var(--w);margin-bottom:2px}
 .pi-text span{font-size:.72rem;color:rgba(110,212,122,.68);line-height:1.5;text-wrap:pretty}
 .form-wrap{background:var(--w);border-radius:24px;padding:42px;box-shadow:var(--sh);border:1px solid rgba(110,212,122,.14)}
+.contact-ig{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px;padding:54px 42px}
+.contact-ig-icon{width:74px;height:74px;border-radius:20px;background:linear-gradient(135deg,var(--gd),var(--gm));color:#fff;display:flex;align-items:center;justify-content:center;font-size:34px}
+.contact-ig .form-sub{margin:0;max-width:360px}
+.contact-ig .btn-primary{margin-top:4px}
+.contact-ig-handle{font-size:.82rem;font-weight:700;color:var(--gd);letter-spacing:.02em}
 .form-title{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:600;color:var(--td);margin-bottom:6px}
 .form-sub{font-size:.84rem;color:var(--tl);margin-bottom:28px;line-height:1.6;text-wrap:pretty}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:13px}
@@ -365,7 +395,7 @@ footer{background:var(--td);padding:55px 6% 36px;color:rgba(255,255,255,.52)}
   .c1,.c2,.c3,.c4{display:none}
   .csg{grid-template-columns:1fr}.csg-img-wrap{display:none}
   .pf-grid{grid-template-columns:1fr 1fr}.piani-grid{grid-template-columns:1fr}.piano.feat{transform:none}
-  .pd-slide{width:clamp(260px,42vw,350px)}
+  .pd-slide{width:clamp(256px,42vw,338px)}
   .pd-intro .sd{white-space:normal;max-width:560px}
   .cont-wrap{grid-template-columns:1fr}
   .nav-links{display:none}.form-row{grid-template-columns:1fr}.ft{flex-direction:column;gap:28px}
@@ -434,36 +464,41 @@ footer{background:var(--td);padding:55px 6% 36px;color:rgba(255,255,255,.52)}
     <div class="survey-intro">
       <div class="sl">Parliamoci</div>
       <h2 class="st">Inizia il tuo percorso con una scelta consapevole</h2>
-      <p class="sd">Rispondi in pochi istanti e scopri subito quale sintomatologia è prioritaria per il tuo piano nutrizionale.</p>
+      <p class="sd">Rispondi a poche domande, una alla volta: Camilla studierà la tua situazione e ti proporrà il percorso più adatto, partendo da una videocall conoscitiva gratuita.</p>
     </div>
     <div class="survey-grid">
       <div class="survey-panel">
         <div class="survey-panel-card">
           <div class="survey-panel-inner">
             <span class="survey-panel-tag">Sondaggio rapido</span>
-            <h3>Il punto di partenza del tuo percorso</h3>
-            <p>La sintomatologia che scegli aiuta Camilla a capire da dove partire e a personalizzare il primo confronto sulle tue reali esigenze.</p>
+            <h3>Il primo passo del tuo percorso</h3>
+            <p>Le tue risposte aiutano Camilla a conoscere la tua situazione e a personalizzare la videocall gratuita sulle tue reali esigenze.</p>
             <ul class="survey-panel-list">
-              <li>Ti basta un istante: una sola risposta</li>
+              <li>Bastano pochi minuti, una domanda alla volta</li>
               <li>Nessun impegno, le tue informazioni restano riservate</li>
-              <li>Orienti subito la consulenza sul sintomo che senti prioritario</li>
+              <li>Al termine fissi la tua videocall conoscitiva gratuita</li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="survey-card">
+      <div class="survey-card" id="surveyCard">
+        <div class="survey-progress"><div class="survey-progress-bar" id="surveyBar"></div></div>
         <div class="survey-card-head">
-          <span>Scelta rapida</span>
-          <h3>Quale sintomatologia vorresti ridurre e/o risolvere?</h3>
+          <span class="survey-step-tag" id="surveyTag">Domanda 1 di 9</span>
+          <h3 id="surveyQ">Quale sintomatologia vorresti ridurre e/o risolvere?</h3>
         </div>
-        <form class="survey-form">
-          <label class="survey-option"><span>Aumento di peso</span><input type="radio" name="sintomo" value="peso"></label>
-          <label class="survey-option"><span>Gonfiore</span><input type="radio" name="sintomo" value="gonfiore"></label>
-          <label class="survey-option"><span>Stanchezza cronica e debolezza</span><input type="radio" name="sintomo" value="stanchezza"></label>
-          <label class="survey-option"><span>Nebbia mentale</span><input type="radio" name="sintomo" value="nebbia"></label>
-          <label class="survey-option"><span>Altro</span><input type="radio" name="sintomo" value="altro"></label>
-          <button type="submit" class="survey-btn">Avanti</button>
-        </form>
+        <div class="survey-body" id="surveyBody"></div>
+        <p class="survey-error" id="surveyErr">Seleziona o inserisci una risposta per continuare.</p>
+        <div class="survey-nav" id="surveyNav">
+          <button type="button" class="survey-back" id="surveyBack" hidden>← Indietro</button>
+          <button type="button" class="survey-btn" id="surveyNext">Avanti</button>
+        </div>
+        <div class="survey-done" id="surveyDone">
+          <div class="survey-done-icon">✅</div>
+          <h3>Grazie di cuore!</h3>
+          <p>Ho ricevuto le tue risposte. Ti ricontatterò personalmente entro 24&nbsp;ore per fissare la tua videocall&nbsp;gratuita.</p>
+          <a href="https://www.instagram.com/nutrizionista_camilladelfino/" target="_blank" rel="noopener" class="btn-primary">Seguimi su Instagram →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -694,43 +729,12 @@ footer{background:var(--td);padding:55px 6% 36px;color:rgba(255,255,255,.52)}
         <div class="pi"><div class="pi-icon">⚡</div><div class="pi-text"><strong>Risposta in 24h</strong><span>Ti ricontatto entro 24 ore per fissare&nbsp;l'appuntamento</span></div></div>
       </div>
     </div>
-    <div class="form-wrap reveal">
-      <div class="form-title">Richiedi informazioni</div>
-      <p class="form-sub">Compila il modulo e ti ricontatterò entro 24 ore per fissare la tua videocall&nbsp;gratuita.</p>
-      <form id="contactForm" onsubmit="submitForm(event)">
-        <div class="form-row">
-          <div class="fg"><label>Nome</label><input id="f_nome" type="text" placeholder="Es. Maria" required></div>
-          <div class="fg"><label>Cognome</label><input id="f_cognome" type="text" placeholder="Es. Rossi" required></div>
-        </div>
-        <div class="fg"><label>Email</label><input id="f_email" type="email" placeholder="la-tua@email.it" required></div>
-        <div class="fg"><label>Cellulare</label><input id="f_telefono" type="tel" placeholder="+39 333 000 0000"></div>
-        <div class="fg">
-          <label>Sintomatologia da risolvere</label>
-          <select id="f_sintomo" required>
-            <option value="" disabled selected>Seleziona un'opzione</option>
-            <option>Aumento di peso</option>
-            <option>Gonfiore</option>
-            <option>Stanchezza cronica e debolezza</option>
-            <option>Nebbia mentale</option>
-            <option>Altro</option>
-          </select>
-        </div>
-        <div class="fg">
-          <label>Percorso di interesse</label>
-          <select id="f_percorso" required>
-            <option value="" disabled selected>Seleziona un'opzione</option>
-            <option>Percorso Basic — 3 mesi</option>
-            <option>Percorso Medium — 6 mesi</option>
-            <option>Percorso Pro — 12 mesi</option>
-            <option>Solo informazioni</option>
-          </select>
-        </div>
-        <div class="fg"><label>Messaggio (opzionale)</label><textarea id="f_messaggio" placeholder="Raccontami brevemente la tua situazione..."></textarea></div>
-        <label class="pc"><input type="checkbox" required><span class="ptext">Ho letto e accetto la <a href="#">Privacy Policy</a>. Acconsento al trattamento dei dati ai sensi del&nbsp;GDPR.</span></label>
-        <button id="submitBtn" type="submit" class="fsub">Invia la richiesta ✉️</button>
-        <div class="success-msg" id="successMsg">✅ Messaggio inviato! Ti risponderò entro 24&nbsp;ore.</div>
-        <div class="error-msg" id="errorMsg">⚠️ Si è verificato un errore. Riprova o scrivimi a camilladelfino7@gmail.com.</div>
-      </form>
+    <div class="form-wrap reveal contact-ig">
+      <div class="contact-ig-icon">📱</div>
+      <div class="form-title">Scrivimi su Instagram</div>
+      <p class="form-sub">Mandami un messaggio diretto e raccontami la tua situazione: ti rispondo personalmente entro 24&nbsp;ore per fissare la tua videocall&nbsp;gratuita.</p>
+      <a href="https://www.instagram.com/nutrizionista_camilladelfino/" target="_blank" rel="noopener" class="btn-primary">Scrivimi in DM →</a>
+      <span class="contact-ig-handle">@nutrizionista_camilladelfino</span>
     </div>
   </div>
 </section>
@@ -889,28 +893,116 @@ function submitForm(e){e.preventDefault();
   render();
 })();
 
-/* ── SONDAGGIO → FORM CONTATTI ── */
+/* ── SONDAGGIO MULTI-STEP → GOOGLE SHEETS ── */
 (function(){
-  const surveyForm = document.querySelector('.survey-form');
-  const sintomoField = document.getElementById('f_sintomo');
-  if(!surveyForm) return;
+  const card = document.getElementById('surveyCard');
+  if(!card) return;
 
-  function syncSintomo(radio){
-    if(!sintomoField || !radio) return;
-    const label = radio.closest('.survey-option').querySelector('span').textContent.trim();
-    sintomoField.value = label;
+  /* ⚙️ CONFIG: incolla qui l'URL "/exec" della Web App Google Apps Script.
+     Finché resta il placeholder il sondaggio funziona ma NON invia al foglio. */
+  const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwsHGN66UNBP6IJPuvyFd7n9INwNJZScbP2rd1KiKAGJf4jyj944XSzywF04oykiK2F/exec';
+
+  const QUESTIONS = [
+    {id:'sintomo',    type:'single',   q:'Quale sintomatologia vorresti ridurre e/o risolvere?', opts:['Aumento di peso','Gonfiore','Stanchezza cronica e debolezza','Nebbia mentale','Altro']},
+    {id:'esperienza', type:'single',   q:'Hai già provato a seguire un\'alimentazione mirata per la tua situazione?', opts:['Sì, ma con pochi risultati','Sì, con buoni risultati','No, è la prima volta','Ho sempre fatto da sola/o']},
+    {id:'motivazione',type:'scale',    q:'Quanto sei motivato/a a seguire un percorso personalizzato di nutrizione?', min:1, max:10, lo:'Per niente', hi:'Moltissimo'},
+    {id:'tempo',      type:'single',   q:'Sei disposta/o a dedicare tempo e impegno ogni settimana per organizzare i tuoi pasti?', opts:['Certo!','Sì, ma devo organizzarmi','No, non riesco']},
+    {id:'inizio',     type:'single',   q:'Se il percorso fa per te, sei pronto/a ad iniziare nei prossimi 10 giorni?', opts:['Sì','No']},
+    {id:'situazione', type:'textarea', q:'Descrivimi brevemente la tua situazione attuale (obiettivi, difficoltà, cosa vorresti migliorare).', ph:'Scrivi qui la tua situazione…', optional:true},
+    {id:'fascia',     type:'single',   q:'In quale fascia oraria saresti disponibile per una videocall gratuita di circa 25 minuti?', opts:['Mattina','Primo pomeriggio','Tardo pomeriggio/Sera']},
+    {id:'budget',     type:'single',   q:'Quanto sei disposto/a ad investire mensilmente per il tuo benessere?', opts:['Meno di 100€','Tra i 100€ e i 130€','Tra i 130€ e i 150€','Non importa, voglio risolvere la mia situazione']},
+    {id:'contatti',   type:'contact',  q:'Scrivimi il tuo nome, cognome e numero di telefono', fields:[{id:'nome',label:'Nome e cognome',type:'text',ph:'Es. Maria Rossi'},{id:'telefono',label:'Numero di telefono',type:'tel',ph:'+39 333 000 0000'}]}
+  ];
+
+  const bar  = document.getElementById('surveyBar');
+  const tag  = document.getElementById('surveyTag');
+  const qEl  = document.getElementById('surveyQ');
+  const body = document.getElementById('surveyBody');
+  const err  = document.getElementById('surveyErr');
+  const nav  = document.getElementById('surveyNav');
+  const back = document.getElementById('surveyBack');
+  const next = document.getElementById('surveyNext');
+  const done = document.getElementById('surveyDone');
+  const esc  = s => String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+  const answers = {};
+  let step = 0;
+
+  function render(){
+    const Q = QUESTIONS[step];
+    tag.textContent = 'Domanda ' + (step+1) + ' di ' + QUESTIONS.length;
+    qEl.textContent = Q.q;
+    bar.style.width = Math.round((step/QUESTIONS.length)*100 + 100/QUESTIONS.length) + '%';
+    err.classList.remove('is-on');
+    body.innerHTML = '';
+
+    if(Q.type === 'single'){
+      Q.opts.forEach(opt => {
+        const lab = document.createElement('label');
+        lab.className = 'survey-option';
+        lab.innerHTML = '<span>'+esc(opt)+'</span><input type="radio" name="'+Q.id+'"'+(answers[Q.id]===opt?' checked':'')+'>';
+        lab.querySelector('input').addEventListener('change', () => { answers[Q.id]=opt; err.classList.remove('is-on'); });
+        body.appendChild(lab);
+      });
+    } else if(Q.type === 'scale'){
+      const wrap = document.createElement('div'); wrap.className='survey-scale';
+      for(let nmb=Q.min; nmb<=Q.max; nmb++){
+        const b=document.createElement('button'); b.type='button'; b.className='survey-scale-btn'; b.textContent=nmb;
+        if(String(answers[Q.id])===String(nmb)) b.classList.add('is-on');
+        b.addEventListener('click', () => { answers[Q.id]=nmb; wrap.querySelectorAll('.survey-scale-btn').forEach(x=>x.classList.remove('is-on')); b.classList.add('is-on'); err.classList.remove('is-on'); });
+        wrap.appendChild(b);
+      }
+      const labs=document.createElement('div'); labs.className='survey-scale-labels';
+      labs.innerHTML='<span>'+esc(Q.lo)+'</span><span>'+esc(Q.hi)+'</span>';
+      body.appendChild(wrap); body.appendChild(labs);
+    } else if(Q.type === 'textarea'){
+      const f=document.createElement('div'); f.className='survey-field';
+      f.innerHTML='<textarea placeholder="'+esc(Q.ph)+'"></textarea>';
+      const ta=f.querySelector('textarea'); ta.value=answers[Q.id]||'';
+      ta.addEventListener('input', () => { answers[Q.id]=ta.value; });
+      body.appendChild(f);
+    } else if(Q.type === 'contact'){
+      Q.fields.forEach(fl => {
+        const f=document.createElement('div'); f.className='survey-field';
+        f.innerHTML='<label>'+esc(fl.label)+'</label><input type="'+fl.type+'" placeholder="'+esc(fl.ph)+'">';
+        const inp=f.querySelector('input'); inp.value=answers[fl.id]||'';
+        inp.addEventListener('input', () => { answers[fl.id]=inp.value; err.classList.remove('is-on'); });
+        body.appendChild(f);
+      });
+    }
+
+    back.hidden = step === 0;
+    next.textContent = step === QUESTIONS.length-1 ? 'Invia le risposte →' : 'Avanti';
   }
 
-  surveyForm.querySelectorAll('input[name="sintomo"]').forEach(radio => {
-    radio.addEventListener('change', () => syncSintomo(radio));
-  });
+  function valid(){
+    const Q = QUESTIONS[step];
+    if(Q.optional) return true;
+    if(Q.type === 'single' || Q.type === 'scale') return answers[Q.id] != null && answers[Q.id] !== '';
+    if(Q.type === 'contact') return Q.fields.every(fl => (answers[fl.id]||'').trim() !== '');
+    return true;
+  }
 
-  surveyForm.addEventListener('submit', e => {
-    e.preventDefault();
-    syncSintomo(surveyForm.querySelector('input[name="sintomo"]:checked'));
-    const target = document.getElementById('contatti');
-    if(target) target.scrollIntoView({behavior:'smooth'});
+  next.addEventListener('click', () => {
+    if(!valid()){ err.classList.add('is-on'); return; }
+    if(step < QUESTIONS.length-1){ step++; render(); card.scrollIntoView({behavior:'smooth',block:'center'}); }
+    else submit();
   });
+  back.addEventListener('click', () => { if(step>0){ step--; render(); } });
+
+  function submit(){
+    next.disabled = true; next.textContent = 'Invio in corso…';
+    const payload = Object.assign({}, answers, {data_invio: new Date().toLocaleString('it-IT')});
+    const finish = () => { nav.style.display='none'; err.classList.remove('is-on'); bar.style.width='100%'; done.classList.add('is-on'); card.scrollIntoView({behavior:'smooth',block:'center'}); };
+    if(!SHEET_ENDPOINT || SHEET_ENDPOINT.indexOf('INCOLLA') === 0){
+      console.warn('SHEET_ENDPOINT non configurato: risposte non inviate al foglio.', payload);
+      finish(); return;
+    }
+    fetch(SHEET_ENDPOINT, {method:'POST', mode:'no-cors', headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}, body: new URLSearchParams(payload).toString()})
+      .then(finish).catch(finish);
+  }
+
+  render();
 })();
 </script>
 </body>
